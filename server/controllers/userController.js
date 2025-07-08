@@ -1,13 +1,14 @@
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import razorpay from 'razorpay';
 
 const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
         if (!name || !email || !password) {
-            return res.json({ sucess: false, message: "Missing Details" });
+            return res.json({ success: false, message: "Missing Details" });
         }
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -65,14 +66,16 @@ const loginUser = async (req, res) => {
 };
 const userCredits = async (req, res) => {
     try {
-        const { userId } = req.body
-        const user = await userModel.findById(userId)
+       //const { userId } = req.body
+        const user = await userModel.findById(req.userId)
         res.json({ success: true, credits: user.creditBalance, user: { name: user.name } })
     } catch (error) {
         console.log(error.message)
         res.json({ success: false, message: error.message })
     }
 }
+
+
 
 
 
