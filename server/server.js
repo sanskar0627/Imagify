@@ -23,8 +23,7 @@ app.options('*', cors());
 
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)
-app.get('/', (req, res) => res.send("API Working"))
-
+app.get('/', (req, res) => res.send("API Working"));
 
 connectDB().then(() => {
   app.listen(PORT, () => console.log('Server running on port ' + PORT));
