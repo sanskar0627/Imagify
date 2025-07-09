@@ -21,19 +21,11 @@ app.use(cors({
 
 app.options('*', cors());
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://imagify-ai-saasl.vercel.app');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,token');
-  next();
-});
-
-await connectDB()
-
-
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)
 app.get('/', (req, res) => res.send("API Working"))
 
-app.listen(PORT, () => console.log('Server running on port ' + PORT));
+
+connectDB().then(() => {
+  app.listen(PORT, () => console.log('Server running on port ' + PORT));
+});
