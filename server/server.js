@@ -18,6 +18,17 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'token']
 }));
+
+app.options('*', cors());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://imagify-ai-saasl.vercel.app');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,token');
+  next();
+});
+
 await connectDB()
 
 
