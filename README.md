@@ -100,7 +100,11 @@ A sleek, modern full-stack SaaS platform to generate stunning AI images from tex
 
 ## 📸 Screenshots
 
-*Add your app screenshots or demo GIFs here!*
+![image](https://github.com/user-attachments/assets/77b75eb0-b48d-44fb-aa17-b3b9132daa0f)
+![image](https://github.com/user-attachments/assets/628a6973-87f2-4182-92fc-3989f82afe2a)
+![image](https://github.com/user-attachments/assets/0915e1c4-5452-4bba-a483-91b0e4b2df06)
+
+
 
 ---
 
