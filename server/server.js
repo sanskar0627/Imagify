@@ -9,11 +9,17 @@ const PORT = process.env.PORT || 4000
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ['https://imagify-ai-saasl.vercel.app',
+        'http://localhost:4000'
+    ],
+    credentials: true
+}));
 await connectDB()
 
-app.use('/api/user',userRouter)
-app.use('/api/image',imageRouter)
+
+app.use('/api/user', userRouter)
+app.use('/api/image', imageRouter)
 app.get('/', (req, res) => res.send("API Working"))
 
 app.listen(PORT, () => console.log('Server running on port ' + PORT));
