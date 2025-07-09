@@ -2,6 +2,11 @@
 
 A sleek, modern full-stack SaaS platform to generate stunning AI images from text prompts. Built with the MERN stack, secure authentication, and seamless Razorpay payments.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-brightgreen?style=for-the-badge&logo=vercel)](https://imagify-ai-saasl.vercel.app/)
+
+Experience Imagify live:  
+👉 **[imagify-ai-saasl.vercel.app](https://imagify-ai-saasl.vercel.app/)**
+
 ---
 
 ## 🌟 Features
