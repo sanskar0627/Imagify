@@ -10,21 +10,20 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-  origin: [
-    'https://imagify-ai-saasl.vercel.app',
-    'http://localhost:3000'
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'token']
-}));
+    origin: [
+        'https://imagify-ai-saasl.vercel.app',
+        'http://localhost:3000'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 
-app.options('*', cors());
+    allowedHeaders: ['Content-Type', 'Authorization', 'token']
+}));
+await connectDB()
+
 
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)
-app.get('/', (req, res) => res.send("API Working"));
+app.get('/', (req, res) => res.send("API Working"))
 
-connectDB().then(() => {
-  app.listen(PORT, () => console.log('Server running on port ' + PORT));
-});
+app.listen(PORT, () => console.log('Server running on port ' + PORT));
