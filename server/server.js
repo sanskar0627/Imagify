@@ -9,16 +9,19 @@ const PORT = process.env.PORT || 4000
 const app = express()
 
 app.use(express.json())
-app.use(cors({
-    origin: [
-        'https://imagify-ai-saasl.vercel.app',
-        'http://localhost:3000'
-    ],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+const allowedOrigins = [
+  'https://imagify-ai-saasl.vercel.app',
+  'http://localhost:5173',               
+  'http://localhost:3000'                
+];
 
-    allowedHeaders: ['Content-Type', 'Authorization', 'token']
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'token']
 }));
+
 await connectDB()
 
 
