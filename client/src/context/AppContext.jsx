@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const [user, setuser] = useState(true);
+  const [user, setuser] = useState(null);
   const [showLogin, setshowLogin] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [credit, setCredit] = useState(null);
