@@ -37,7 +37,12 @@ const Result = () => {
     >
       <div>
         <div className="relative ">
-          <img src={image} alt="" className="mx-w-sm rounded " />
+          <img
+            src={image}
+            alt=""
+            className="max-w-sm  w-full rounded-lg shadow-lg mx-auto"
+          />
+
           <span
             className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${
               loading ? "w-full transition-all duration-[10s]" : "w-0"

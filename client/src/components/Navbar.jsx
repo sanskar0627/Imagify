@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { user, setshowLogin, logout, credit } = useContext(AppContext);
@@ -24,7 +25,11 @@ const Navbar = () => {
               </p>
             </button>
             <p className="text-gray-600 max-sm:hidden pl-4">
-              Hi, {user.name?.split(" ")[0]}
+              Hi,{" "}
+              {user.name
+                ? user.name.split(" ")[0].charAt(0).toUpperCase() +
+                  user.name.split(" ")[0].slice(1).toLowerCase()
+                : ""}
             </p>
             <div className="relative group">
               <img
@@ -44,15 +49,23 @@ const Navbar = () => {
         ) : (
           // if user is not logged in then this div is shwoing
           <div className="flex items-center gap-2 sm:gap-5">
-            <p onClick={() => navigate("/buy")} className="cursor-pointer">
+            <motion.p
+              onClick={() => navigate("/buy")}
+              className="cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Pricing
-            </p>
-            <button
+            </motion.p>
+
+            <motion.button
               onClick={() => setshowLogin(true)}
               className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Login
-            </button>
+            </motion.button>
           </div>
         )}
       </div>

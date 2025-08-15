@@ -12,9 +12,20 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMsg("Please enter a valid email address.");
+      return;
+    }
+    if (password.length < 6) {
+      setErrorMsg("Password must be at least 6 characters long.");
+      return;
+    }
 
     try {
       if (state === "Login") {
@@ -120,17 +131,22 @@ const Login = () => {
             required
           />
         </div>
+        {errorMsg && <p className="text-red-500 text-sm mb-2">{errorMsg}</p>}
         <p className="text-sm text-blue-600 my-4 cursor-pointer">
           Forgot password?
         </p>
 
-        <button className="bg-blue-600 w-full text-white py-2 rounded-full">
+        <motion.button
+          className="bg-blue-600 w-full text-white py-2 rounded-full cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           {state === "Login" ? "Login" : "Create Account"}
-        </button>
+        </motion.button>
 
         {state === "Login" ? (
           <p className="mt-5 text-center">
-            Don't have an account?
+            Don't have an account?{"  "}
             <span
               className="text-blue-600 cursor-pointer"
               onClick={() => setState("Sign Up")}
